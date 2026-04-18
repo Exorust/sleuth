@@ -6,6 +6,8 @@ on:
     paths:
       - "docs/**"
       - "mkdocs.yml"
+      - "viewer/**"
+      - "examples/**"
       - ".github/workflows/docs.yml"
   workflow_dispatch:
 
@@ -26,8 +28,22 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
       - run: pip install 'mkdocs>=1.6' 'mkdocs-material>=9.5' 'pymdown-extensions>=10.7'
       - run: mkdocs build --strict
+      - name: Build viewer
+        working-directory: viewer
+        env:
+          VIEWER_BASE: /rlm-logger/viewer/
+        run: |
+          npm install
+          npm run build
+      - name: Merge viewer into site
+        run: |
+          mkdir -p site/viewer
+          cp -R viewer/dist/. site/viewer/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

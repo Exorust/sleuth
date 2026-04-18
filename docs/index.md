@@ -25,7 +25,7 @@ and a confidence score.
 
 Every run produces one `.rlm.json` file: question + trajectory + report + evidence +
 ground truth (optional). The file is the product. It's deterministic to replay
-(`rlm replay case.rlm.json`), renders in any browser at [rlm.sh](https://rlm.sh),
+(`rlm replay case.rlm.json`), renders in [the browser viewer](viewer/),
 and is small enough to paste into a GitHub issue.
 
 ## Next
