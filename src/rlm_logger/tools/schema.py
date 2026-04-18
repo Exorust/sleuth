@@ -5,6 +5,14 @@ import duckdb
 
 
 def schema(conn: duckdb.DuckDBPyConnection) -> str:
-    """Return a one-paragraph description of what's in the event store."""
-    # TODO: SELECT DISTINCT service, SELECT DISTINCT level, MIN/MAX(ts), COUNT(*).
-    raise NotImplementedError
+    services = [r[0] for r in conn.execute("SELECT DISTINCT service FROM events ORDER BY service").fetchall()]
+    levels = [r[0] for r in conn.execute("SELECT DISTINCT level FROM events ORDER BY level").fetchall()]
+    row = conn.execute("SELECT MIN(ts), MAX(ts), COUNT(*) FROM events").fetchone()
+    ts_min, ts_max, n = row
+    return (
+        f"events table: {n} rows\n"
+        f"services: {', '.join(services)}\n"
+        f"levels: {', '.join(levels)}\n"
+        f"time window: {ts_min.isoformat()} → {ts_max.isoformat()}\n"
+        f"columns: ts, service, level, msg, raw (json), file, line"
+    )
