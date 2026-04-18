@@ -42,17 +42,17 @@ def ask(
     provider, name = (model.split("/", 1) + ["", ""])[:2]
     lm = LiteLM(model=model, temperature=0.2)
     model_info = ModelInfo(provider=provider or "unknown", name=name or model, temperature=0.2)
-    observer = PlainRenderer()  # LiveRenderer (Rich) pending; PlainRenderer is the default fallback.
 
-    case = run(
-        question=question,
-        conn=conn,
-        manifest=manifest,
-        model=model_info,
-        lm=lm,
-        observer=observer,
-        budget=Budget(max_iterations=max_iterations, max_llm_calls=max_llm_calls, max_wall_clock_s=max_wall_clock),
-    )
+    budget = Budget(max_iterations=max_iterations, max_llm_calls=max_llm_calls, max_wall_clock_s=max_wall_clock)
+
+    if plain or not sys.stdout.isatty():
+        case = run(question=question, conn=conn, manifest=manifest, model=model_info,
+                   lm=lm, observer=PlainRenderer(), budget=budget)
+    else:
+        from rlm_logger.ui.live import LiveRenderer
+        with LiveRenderer(question=question) as renderer:
+            case = run(question=question, conn=conn, manifest=manifest, model=model_info,
+                       lm=lm, observer=renderer, budget=budget)
 
     dump(case, out)
     typer.echo(f"\ncase file → {out}  (termination: {case.termination_reason})", err=True)
