@@ -14,9 +14,33 @@ const gt = GroundTruth.parse(gtRaw);
 ---
 <Base title="rlm-logger — case file viewer" description="Git bisect for production incidents.">
   <main class="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12">
-    <header class="mb-8">
-      <div class="flex items-baseline gap-3 mb-3">
+    <section class="panel p-5 mb-6 border-accent/40">
+      <div class="flex items-baseline gap-3 mb-3 flex-wrap">
         <h1 class="font-mono text-xl md:text-2xl font-semibold">rlm-logger</h1>
+        <span class="mono-tag text-accent border-accent/50">demo case file</span>
+      </div>
+      <p class="font-sans text-fg text-base leading-relaxed mb-3">
+        <strong>What this is:</strong> one run of the <a href="https://github.com/Exorust/rlm-logger" class="text-accent hover:underline">rlm-logger</a> agent against a synthetic 72-row, 5-service log fixture of a <em>Stripe API key rotation that cascaded into checkout 5xx errors</em>. You asked a question in English, the agent wrote Python over your logs, and this page is the signed output it produced.
+      </p>
+      <p class="font-sans text-fg/80 text-sm leading-relaxed mb-3">
+        Every run produces one JSON document called a <strong>case file</strong>. It holds the question, every step the agent took, the root cause it landed on, and the log lines it cited. This viewer just renders that JSON.
+      </p>
+      <details class="font-sans text-sm text-fg/80 leading-relaxed">
+        <summary class="cursor-pointer text-muted hover:text-accent">What am I looking at, panel by panel?</summary>
+        <ul class="mt-2 space-y-1 list-disc list-inside">
+          <li><strong>Question</strong> — what a human asked in English.</li>
+          <li><strong>Root cause + remediation</strong> — the agent's final answer and what to do about it.</li>
+          <li><strong>Confidence</strong> — how sure the agent is, in its own words.</li>
+          <li><strong>Ground truth</strong> — pass/fail gates. This fixture has a known answer, so we can grade whether the agent cited the right events and avoided the red herrings.</li>
+          <li><strong>Evidence</strong> — actual log lines the agent pointed at, with ±3 lines of context.</li>
+          <li><strong>Trajectory</strong> — the full reasoning loop: every tool call, every observation, in order. This is the "show your work" section.</li>
+        </ul>
+      </details>
+    </section>
+
+    <header class="mb-8">
+      <div class="flex items-baseline gap-3 mb-3 flex-wrap">
+        <span class="text-xs text-muted tracking-wide font-mono">the question</span>
         <span class="mono-tag">v{demo.version}</span>
         <span class="mono-tag text-accent border-accent/50">{demo.termination_reason}</span>
       </div>
