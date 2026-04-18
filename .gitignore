@@ -16,3 +16,5 @@ build/
 node_modules/
 viewer/dist/
 viewer/.astro/
+viewer/node_modules/
+.venv/

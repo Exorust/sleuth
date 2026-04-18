@@ -180,7 +180,7 @@ def run(
                 usage.tool_calls += 1
                 termination = "submitted"
                 break
-            except Exception as e:
+            except Exception:
                 step.stderr_excerpt = (stderr.getvalue() + "\n" + traceback.format_exc())[-4000:]
 
             step.elapsed_ms = int((time.monotonic() - t0) * 1000)
