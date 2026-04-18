@@ -1,0 +1,15 @@
+---
+import type { Step } from "../lib/schemas";
+import StepCard from "./StepCard.astro";
+interface Props { trajectory: Step[] }
+const { trajectory } = Astro.props;
+---
+<section aria-label="Trajectory" class="panel p-4">
+  <header class="flex items-baseline justify-between mb-3">
+    <h2 class="text-sm font-medium tracking-wide">trajectory</h2>
+    <span class="mono-tag">{trajectory.length} steps</span>
+  </header>
+  <ol class="space-y-2">
+    {trajectory.map((s) => <li><StepCard step={s} /></li>)}
+  </ol>
+</section>

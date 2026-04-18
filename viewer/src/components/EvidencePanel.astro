@@ -1,0 +1,39 @@
+---
+import type { EvidenceLine } from "../lib/schemas";
+interface Props { evidence: EvidenceLine[] }
+const { evidence } = Astro.props;
+
+const levelColor: Record<string, string> = {
+  error: "text-err",
+  warn: "text-warn",
+  info: "text-fg/70",
+  debug: "text-muted",
+};
+---
+<section aria-label="Evidence" class="panel p-4">
+  <header class="flex items-baseline justify-between mb-3">
+    <h2 class="text-sm font-medium tracking-wide">evidence</h2>
+    <span class="mono-tag">{evidence.filter(e => e.is_key).length} key / {evidence.length} total</span>
+  </header>
+  <ul class="space-y-3">
+    {evidence.map((e) => (
+      <li class={`border rounded-md p-3 ${e.is_key ? "border-accent/60 bg-accent/5" : "border-border bg-surface2"}`}>
+        <div class="flex items-baseline gap-2 font-mono text-xs mb-1.5">
+          {e.is_key && <span class="text-accent font-medium">KEY</span>}
+          <span class="text-muted">{e.ts}</span>
+          <span class="text-fg">{e.service}</span>
+          <span class={levelColor[e.level] ?? "text-muted"}>{e.level}</span>
+          <span class="ml-auto text-muted">{e.file}:{e.line}</span>
+        </div>
+        {e.context_before.length > 0 && (
+          <pre class="mono text-xs text-muted whitespace-pre-wrap">{e.context_before.join("\n")}</pre>
+        )}
+        <pre class="mono text-xs text-fg bg-bg border border-border rounded p-2 my-1 whitespace-pre-wrap">{e.text_redacted}</pre>
+        {e.context_after.length > 0 && (
+          <pre class="mono text-xs text-muted whitespace-pre-wrap">{e.context_after.join("\n")}</pre>
+        )}
+        <p class="text-xs text-fg/80 mt-2 font-sans">{e.why}</p>
+      </li>
+    ))}
+  </ul>
+</section>

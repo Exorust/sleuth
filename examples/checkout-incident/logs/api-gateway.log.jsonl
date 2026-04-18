@@ -1,0 +1,13 @@
+{"ts":"2026-04-17T02:55:13Z","service":"api-gateway","level":"info","msg":"POST /v1/checkout/submit 200","trace_id":"tr_0001","latency_ms":212}
+{"ts":"2026-04-17T02:56:31Z","service":"api-gateway","level":"info","msg":"POST /v1/checkout/submit 200","trace_id":"tr_0002","latency_ms":198}
+{"ts":"2026-04-17T02:57:40Z","service":"api-gateway","level":"warn","msg":"rate limit triggered","route":"GET /v1/products/search","client_id":"mobile-app","limit":"1000/min","action":"429"}
+{"ts":"2026-04-17T02:58:42Z","service":"api-gateway","level":"error","msg":"POST /v1/checkout/submit 502","trace_id":"tr_0003","latency_ms":1420,"upstream":"checkout-worker","upstream_status":401}
+{"ts":"2026-04-17T02:58:53Z","service":"api-gateway","level":"error","msg":"POST /v1/checkout/submit 502","trace_id":"tr_0004","latency_ms":1388,"upstream":"checkout-worker","upstream_status":401}
+{"ts":"2026-04-17T02:59:09Z","service":"api-gateway","level":"error","msg":"POST /v1/checkout/submit 502","trace_id":"tr_0005","latency_ms":1402,"upstream":"checkout-worker","upstream_status":401}
+{"ts":"2026-04-17T03:02:12Z","service":"api-gateway","level":"error","msg":"5xx rate exceeds SLO","route":"POST /v1/checkout/submit","window_s":60,"error_pct":91.4,"slo_pct":0.5,"event_id":"api-gateway-5xx-spike-2026-04-17T03:02:12Z"}
+{"ts":"2026-04-17T03:02:14Z","service":"api-gateway","level":"info","msg":"pagerduty incident created","incident_id":"PD-9182","severity":"sev2","on_call":"oncall-checkout"}
+{"ts":"2026-04-17T03:10:00Z","service":"api-gateway","level":"error","msg":"5xx rate sustained","route":"POST /v1/checkout/submit","window_s":60,"error_pct":93.8}
+{"ts":"2026-04-17T03:25:00Z","service":"api-gateway","level":"error","msg":"5xx rate sustained","route":"POST /v1/checkout/submit","window_s":60,"error_pct":92.1}
+{"ts":"2026-04-17T03:45:46Z","service":"api-gateway","level":"info","msg":"POST /v1/checkout/submit 200","trace_id":"tr_9101","latency_ms":224}
+{"ts":"2026-04-17T03:46:30Z","service":"api-gateway","level":"info","msg":"5xx rate recovered","route":"POST /v1/checkout/submit","window_s":60,"error_pct":0.3}
+{"ts":"2026-04-17T03:46:31Z","service":"api-gateway","level":"info","msg":"pagerduty incident resolved","incident_id":"PD-9182"}

@@ -1,0 +1,50 @@
+---
+import type { CaseFile, GroundTruth } from "../lib/schemas";
+interface Props { report: CaseFile["report"]; groundTruth: GroundTruth }
+const { report, groundTruth } = Astro.props;
+
+// Evidence-overlap metric: how many ground-truth event_ids appear in report evidence
+const reportIds = new Set((report?.evidence ?? []).map((e) => e.event_id).filter(Boolean) as string[]);
+const gtIds = new Set(groundTruth.evidence_event_ids);
+const hit = [...gtIds].filter((id) => reportIds.has(id));
+const miss = [...gtIds].filter((id) => !reportIds.has(id));
+const overlap = gtIds.size ? hit.length / gtIds.size : 0;
+
+// Distractor hits: any distractor cited as key
+const distractorEvents = new Set(groundTruth.distractors.map((d) => (d as any).event as string));
+const distractorHits = (report?.evidence ?? []).filter((e) => e.is_key && distractorEvents.has(e.event_id ?? ""));
+---
+<section aria-label="Ground truth" class="panel p-4">
+  <header class="flex items-baseline justify-between mb-3">
+    <h2 class="text-sm font-medium tracking-wide">ground truth</h2>
+    <span class={`mono-tag ${overlap >= 0.5 ? "border-ok/50 text-ok" : "border-err/50 text-err"}`}>
+      overlap {(overlap * 100).toFixed(0)}%
+    </span>
+  </header>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+    <div>
+      <h3 class="text-xs text-muted mb-1.5">hit ({hit.length})</h3>
+      <ul class="mono text-xs space-y-1">
+        {hit.map((id) => <li class="text-ok">✓ {id}</li>)}
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-xs text-muted mb-1.5">miss ({miss.length})</h3>
+      <ul class="mono text-xs space-y-1">
+        {miss.map((id) => <li class="text-err">✗ {id}</li>)}
+      </ul>
+    </div>
+  </div>
+  {distractorHits.length > 0 && (
+    <div class="mt-3 border-t border-border pt-3">
+      <h3 class="text-xs text-err mb-1.5">distractor cited as key — fail</h3>
+      <ul class="mono text-xs space-y-1 text-err">
+        {distractorHits.map((e) => <li>! {e.event_id}</li>)}
+      </ul>
+    </div>
+  )}
+  <details class="mt-3 text-xs">
+    <summary class="text-muted cursor-pointer">expected root cause</summary>
+    <p class="mt-2 text-fg/80 font-sans">{groundTruth.root_cause}</p>
+  </details>
+</section>

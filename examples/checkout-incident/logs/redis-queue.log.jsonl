@@ -1,0 +1,11 @@
+{"ts":"2026-04-17T02:55:00Z","service":"redis","level":"info","msg":"queue stat","queue":"checkout.submit","depth":12,"enqueue_rate_s":18,"dequeue_rate_s":19}
+{"ts":"2026-04-17T02:57:12Z","service":"redis","level":"warn","msg":"replica connection blip","replica":"redis-replica-02","duration_ms":340,"recovered":true}
+{"ts":"2026-04-17T02:58:00Z","service":"redis","level":"info","msg":"queue stat","queue":"checkout.submit","depth":14,"enqueue_rate_s":20,"dequeue_rate_s":19}
+{"ts":"2026-04-17T03:00:00Z","service":"redis","level":"warn","msg":"queue stat","queue":"checkout.submit","depth":312,"enqueue_rate_s":21,"dequeue_rate_s":4,"note":"dequeue rate collapsed"}
+{"ts":"2026-04-17T03:04:30Z","service":"redis","level":"warn","msg":"queue lag threshold exceeded","queue":"checkout.submit","depth":1104,"threshold":500,"event_id":"redis-queue-lag-2026-04-17T03:04:30Z"}
+{"ts":"2026-04-17T03:10:00Z","service":"redis","level":"warn","msg":"queue stat","queue":"checkout.submit","depth":1842,"enqueue_rate_s":22,"dequeue_rate_s":2}
+{"ts":"2026-04-17T03:20:00Z","service":"redis","level":"error","msg":"queue stat","queue":"checkout.submit","depth":4910,"enqueue_rate_s":22,"dequeue_rate_s":2}
+{"ts":"2026-04-17T03:30:00Z","service":"redis","level":"error","msg":"queue stat","queue":"checkout.submit","depth":7341,"enqueue_rate_s":22,"dequeue_rate_s":2}
+{"ts":"2026-04-17T03:40:00Z","service":"redis","level":"error","msg":"queue stat","queue":"checkout.submit","depth":9128,"enqueue_rate_s":22,"dequeue_rate_s":2}
+{"ts":"2026-04-17T03:46:00Z","service":"redis","level":"info","msg":"queue stat","queue":"checkout.submit","depth":8420,"enqueue_rate_s":21,"dequeue_rate_s":48,"note":"drain in progress"}
+{"ts":"2026-04-17T04:10:00Z","service":"redis","level":"info","msg":"queue stat","queue":"checkout.submit","depth":18,"enqueue_rate_s":19,"dequeue_rate_s":19}

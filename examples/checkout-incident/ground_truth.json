@@ -1,0 +1,31 @@
+{
+  "incident_id": "checkout-401-2026-04-17",
+  "root_cause": "checkout-worker failed to pick up the rotated stripe_api_key from vault. Secret was rotated at 02:58:04 UTC; payment-gateway reloaded to v7 immediately, but checkout-worker caches secrets in-process for the pod lifetime and only reloads on SIGHUP or restart. It kept signing outbound calls with stripe_api_key v6, which payment-gateway now rejects as 401 invalid_api_key_version. Retries amplified the error rate and backed up the checkout queue in redis, which is what paged oncall as user-facing 5xx.",
+  "evidence_event_ids": [
+    "vault-rotate-stripe-2026-04-17T02:58:04Z",
+    "checkout-worker-first-401-2026-04-17T02:58:41Z",
+    "payment-gateway-reject-v6-2026-04-17T02:58:41Z",
+    "api-gateway-5xx-spike-2026-04-17T03:02:12Z",
+    "redis-queue-lag-2026-04-17T03:04:30Z"
+  ],
+  "blast_radius": {
+    "duration_minutes": 47,
+    "window_start": "2026-04-17T02:58:41Z",
+    "window_end": "2026-04-17T03:45:30Z",
+    "affected_service": "checkout",
+    "affected_customer_sessions_est": 4120,
+    "failed_orders_est": 612,
+    "revenue_impact_usd_est": 58400
+  },
+  "distractors": [
+    {"event": "redis replica connection blip at 02:57:12", "why_not_causal": "340ms blip on redis-replica-02, recovered, unrelated to primary queue writes"},
+    {"event": "checkout-worker db pool saturation warn at 02:57:22", "why_not_causal": "pool 48/50, recovered without errors; pre-dates the 401s; submit path does not block on this pool"},
+    {"event": "checkout-worker feature-flag reload at 02:57:45", "why_not_causal": "flag toggle on checkout.new_fraud_check is a plausible-looking deploy event but does not touch auth"},
+    {"event": "payment-gateway subscription-worker retry at 02:59:58", "why_not_causal": "different caller, different upstream (stripe-api), recovered on attempt 2"},
+    {"event": "api-gateway rate limit 429 on /v1/products/search at 02:57:40", "why_not_causal": "different route, different client, not in the checkout submit path"}
+  ],
+  "remediation": {
+    "immediate": "rolling restart of checkout-worker deployment to force re-read of stripe_api_key from vault",
+    "permanent": "add SIGHUP handler to checkout-worker that reloads secrets without restart; subscribe to vault rotation webhook so secret version bumps trigger an in-process refresh within 30s"
+  }
+}

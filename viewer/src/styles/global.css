@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  html {
+    background: #0b0d10;
+    color: #e7e9ee;
+    font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  }
+  code, pre, .mono {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+  ::selection {
+    background: #ff6b3d;
+    color: #0b0d10;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0s !important;
+      transition-duration: 0s !important;
+    }
+  }
+}
+
+@layer components {
+  .panel {
+    @apply bg-surface border border-border rounded-md;
+  }
+  .mono-tag {
+    @apply font-mono text-xs px-1.5 py-0.5 rounded border border-border bg-surface2 text-muted;
+  }
+}

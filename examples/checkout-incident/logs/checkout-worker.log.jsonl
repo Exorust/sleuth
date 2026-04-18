@@ -1,0 +1,21 @@
+{"ts":"2026-04-17T02:55:12Z","service":"checkout-worker","level":"info","msg":"order submitted to payment-gateway","trace_id":"tr_0001","request_id":"req_aK9Lm2","order_id":"ord_88121","customer_id":"cust_4411","amount_cents":4200,"status":"ok"}
+{"ts":"2026-04-17T02:56:30Z","service":"checkout-worker","level":"info","msg":"order submitted to payment-gateway","trace_id":"tr_0002","request_id":"req_bM3Np7","order_id":"ord_88122","customer_id":"cust_4412","amount_cents":1999,"status":"ok"}
+{"ts":"2026-04-17T02:57:22Z","service":"checkout-worker","level":"warn","msg":"db connection pool saturation","pool":"orders-rw","in_use":48,"max":50,"wait_ms_p99":180}
+{"ts":"2026-04-17T02:57:45Z","service":"checkout-worker","level":"info","msg":"config reload triggered","source":"feature-flags","flags_changed":["checkout.new_fraud_check"]}
+{"ts":"2026-04-17T02:58:41Z","service":"checkout-worker","level":"error","msg":"payment-gateway returned 401","trace_id":"tr_0003","request_id":"req_cQ8Rt4","order_id":"ord_88123","customer_id":"cust_4413","amount_cents":2499,"http_status":401,"upstream_reason":"invalid_api_key_version","auth_header_sent":"Bearer ey4hG9vKpL2mNqR8sT3uVwX7yZaBcDeF","event_id":"checkout-worker-first-401-2026-04-17T02:58:41Z"}
+{"ts":"2026-04-17T02:58:42Z","service":"checkout-worker","level":"info","msg":"retry scheduled","trace_id":"tr_0003","attempt":1,"backoff_ms":500}
+{"ts":"2026-04-17T02:58:43Z","service":"checkout-worker","level":"error","msg":"payment-gateway returned 401","trace_id":"tr_0003","request_id":"req_cQ8Rt4-r1","http_status":401,"upstream_reason":"invalid_api_key_version"}
+{"ts":"2026-04-17T02:58:52Z","service":"checkout-worker","level":"error","msg":"payment-gateway returned 401","trace_id":"tr_0004","request_id":"req_dS1Uv6","order_id":"ord_88124","http_status":401,"upstream_reason":"invalid_api_key_version"}
+{"ts":"2026-04-17T02:59:08Z","service":"checkout-worker","level":"error","msg":"payment-gateway returned 401","trace_id":"tr_0005","request_id":"req_eT2Wx9","order_id":"ord_88125","http_status":401,"upstream_reason":"invalid_api_key_version"}
+{"ts":"2026-04-17T03:00:11Z","service":"checkout-worker","level":"error","msg":"payment-gateway returned 401","trace_id":"tr_0006","request_id":"req_gV6Ab3","order_id":"ord_88126","http_status":401,"upstream_reason":"invalid_api_key_version"}
+{"ts":"2026-04-17T03:00:15Z","service":"checkout-worker","level":"warn","msg":"error rate exceeds SLO","window_s":60,"error_pct":94.2,"slo_pct":1.0}
+{"ts":"2026-04-17T03:01:44Z","service":"checkout-worker","level":"error","msg":"batch submit failed","batch_size":87,"failed":87,"reason":"all 401 from payment-gateway"}
+{"ts":"2026-04-17T03:02:08Z","service":"checkout-worker","level":"error","msg":"cached secret metadata","secret":"stripe_api_key","loaded_at":"2026-04-17T01:12:04Z","version":6,"note":"no SIGHUP handler, no rotation subscription"}
+{"ts":"2026-04-17T03:05:22Z","service":"checkout-worker","level":"error","msg":"batch submit failed","batch_size":142,"failed":142,"reason":"all 401 from payment-gateway"}
+{"ts":"2026-04-17T03:10:00Z","service":"checkout-worker","level":"error","msg":"queue depth growing","queue":"checkout.submit","depth":1840}
+{"ts":"2026-04-17T03:20:00Z","service":"checkout-worker","level":"error","msg":"queue depth growing","queue":"checkout.submit","depth":4902}
+{"ts":"2026-04-17T03:30:00Z","service":"checkout-worker","level":"error","msg":"queue depth growing","queue":"checkout.submit","depth":7330}
+{"ts":"2026-04-17T03:44:55Z","service":"checkout-worker","level":"info","msg":"SIGTERM received, beginning rolling restart"}
+{"ts":"2026-04-17T03:45:10Z","service":"checkout-worker","level":"info","msg":"pod starting","pod":"checkout-worker-7d9c4f-x2m8k"}
+{"ts":"2026-04-17T03:45:11Z","service":"checkout-worker","level":"info","msg":"secret loaded from vault","secret":"stripe_api_key","version":7}
+{"ts":"2026-04-17T03:45:45Z","service":"checkout-worker","level":"info","msg":"order submitted to payment-gateway","trace_id":"tr_9101","request_id":"req_hW8Cd5","order_id":"ord_88430","http_status":200}

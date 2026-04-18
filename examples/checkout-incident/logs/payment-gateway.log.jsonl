@@ -1,0 +1,16 @@
+{"ts":"2026-04-17T02:55:12Z","service":"payment-gateway","level":"info","msg":"charge accepted","request_id":"req_aK9Lm2","merchant":"acme","amount_cents":4200,"key_version":6}
+{"ts":"2026-04-17T02:56:30Z","service":"payment-gateway","level":"info","msg":"charge accepted","request_id":"req_bM3Np7","merchant":"acme","amount_cents":1999,"key_version":6}
+{"ts":"2026-04-17T02:58:04Z","service":"payment-gateway","level":"info","msg":"secret refresh from vault webhook","secret":"stripe_api_key","new_version":7,"old_version":6}
+{"ts":"2026-04-17T02:58:05Z","service":"payment-gateway","level":"info","msg":"key rotation complete, accepting v7 only","grace_period_s":0}
+{"ts":"2026-04-17T02:58:41Z","service":"payment-gateway","level":"warn","msg":"auth rejected","request_id":"req_cQ8Rt4","reason":"invalid_api_key_version","presented_version":6,"expected_version":7,"caller":"checkout-worker","event_id":"payment-gateway-reject-v6-2026-04-17T02:58:41Z","auth_header":"Bearer ey4hG9vKpL2mNqR8sT3uVwX7yZaBcDeF"}
+{"ts":"2026-04-17T02:58:52Z","service":"payment-gateway","level":"warn","msg":"auth rejected","request_id":"req_dS1Uv6","reason":"invalid_api_key_version","presented_version":6,"expected_version":7,"caller":"checkout-worker","auth_header":"Bearer ey4hG9vKpL2mNqR8sT3uVwX7yZaBcDeF"}
+{"ts":"2026-04-17T02:59:08Z","service":"payment-gateway","level":"warn","msg":"auth rejected","request_id":"req_eT2Wx9","reason":"invalid_api_key_version","presented_version":6,"expected_version":7,"caller":"checkout-worker"}
+{"ts":"2026-04-17T02:59:24Z","service":"payment-gateway","level":"info","msg":"charge accepted","request_id":"req_fU4Yz1","merchant":"contoso","amount_cents":8999,"key_version":7,"caller":"subscription-worker"}
+{"ts":"2026-04-17T02:59:58Z","service":"payment-gateway","level":"warn","msg":"upstream timeout retry","request_id":"req_retry_contoso","caller":"subscription-worker","upstream":"stripe-api","attempt":2,"recovered":true}
+{"ts":"2026-04-17T03:00:11Z","service":"payment-gateway","level":"warn","msg":"auth rejected","request_id":"req_gV6Ab3","reason":"invalid_api_key_version","presented_version":6,"expected_version":7,"caller":"checkout-worker"}
+{"ts":"2026-04-17T03:01:44Z","service":"payment-gateway","level":"warn","msg":"auth rejected surge","window_s":60,"rejections":87,"all_caller":"checkout-worker","reason":"invalid_api_key_version"}
+{"ts":"2026-04-17T03:05:22Z","service":"payment-gateway","level":"warn","msg":"auth rejected surge","window_s":60,"rejections":142,"all_caller":"checkout-worker","reason":"invalid_api_key_version"}
+{"ts":"2026-04-17T03:20:00Z","service":"payment-gateway","level":"warn","msg":"auth rejected surge","window_s":60,"rejections":168,"all_caller":"checkout-worker","reason":"invalid_api_key_version"}
+{"ts":"2026-04-17T03:40:00Z","service":"payment-gateway","level":"warn","msg":"auth rejected surge","window_s":60,"rejections":156,"all_caller":"checkout-worker","reason":"invalid_api_key_version"}
+{"ts":"2026-04-17T03:45:20Z","service":"payment-gateway","level":"info","msg":"caller key version recovered","caller":"checkout-worker","new_presented_version":7}
+{"ts":"2026-04-17T03:45:45Z","service":"payment-gateway","level":"info","msg":"charge accepted","request_id":"req_hW8Cd5","merchant":"acme","amount_cents":3200,"key_version":7,"caller":"checkout-worker"}

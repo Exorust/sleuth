@@ -1,0 +1,11 @@
+{"ts":"2026-04-17T02:55:01Z","service":"vault","level":"info","msg":"lease renewal","lease_id":"auth/kv/stripe_api_key/abc-123","ttl_s":3600}
+{"ts":"2026-04-17T02:57:48Z","service":"vault","level":"info","msg":"rotation policy triggered","secret":"kv/stripe_api_key","policy":"90d","current_version":6}
+{"ts":"2026-04-17T02:58:04Z","service":"vault","level":"info","msg":"secret rotated","secret":"kv/stripe_api_key","old_version":6,"new_version":7,"actor":"system/rotation-worker","event_id":"vault-rotate-stripe-2026-04-17T02:58:04Z"}
+{"ts":"2026-04-17T02:58:04Z","service":"vault","level":"info","msg":"webhook dispatched","secret":"kv/stripe_api_key","subscribers":["payment-gateway"]}
+{"ts":"2026-04-17T02:58:05Z","service":"vault","level":"info","msg":"audit log written","event":"rotate","secret":"kv/stripe_api_key","version":7}
+{"ts":"2026-04-17T03:00:00Z","service":"vault","level":"info","msg":"lease renewal","lease_id":"auth/kv/stripe_api_key/abc-124","ttl_s":3600}
+{"ts":"2026-04-17T03:15:00Z","service":"vault","level":"info","msg":"lease renewal","lease_id":"auth/kv/stripe_api_key/abc-125","ttl_s":3600}
+{"ts":"2026-04-17T03:30:00Z","service":"vault","level":"info","msg":"lease renewal","lease_id":"auth/kv/stripe_api_key/abc-126","ttl_s":3600}
+{"ts":"2026-04-17T03:45:10Z","service":"vault","level":"info","msg":"on-demand fetch","secret":"kv/stripe_api_key","version":7,"client":"checkout-worker","client_pod":"checkout-worker-7d9c4f-x2m8k","note":"pod restarted"}
+{"ts":"2026-04-17T03:45:11Z","service":"vault","level":"info","msg":"on-demand fetch","secret":"kv/stripe_api_key","version":7,"client":"checkout-worker","client_pod":"checkout-worker-7d9c4f-b7r2p"}
+{"ts":"2026-04-17T03:45:12Z","service":"vault","level":"info","msg":"on-demand fetch","secret":"kv/stripe_api_key","version":7,"client":"checkout-worker","client_pod":"checkout-worker-7d9c4f-q1n9w"}
