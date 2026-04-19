@@ -44,3 +44,14 @@ Deterministic, no LLM calls. Useful for sharing: the case file is self-contained
 Drop `case.rlm.json` on [rlm.sh](https://rlm.sh) or append `?url=<public-url>` to load
 a remote file. The viewer renders trajectory, evidence (with context ±3 lines),
 confidence dial, and a ground-truth diff if present.
+
+## Bring your own logs
+
+rlm-logger auto-detects exports from the major log platforms. No flags, no config.
+
+- [Splunk](integrations/splunk.md) — Export → JSON
+- [Datadog](integrations/datadog.md) — Log Explorer → Download as JSON
+- [New Relic](integrations/newrelic.md) — NRQL → Export → JSON
+- [Honeycomb](integrations/honeycomb.md) — Query → Download as JSON
+
+Plain `.jsonl`, `.ndjson`, `.log`, and `.gz` also work out of the box.

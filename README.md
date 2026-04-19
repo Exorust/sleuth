@@ -28,6 +28,10 @@ Five read-only query primitives plus two side channels, all sandboxed:
 
 The loop is: LLM emits a python code block → we exec it → feed stdout back → repeat until `submit_incident_report` or budget exhaustion.
 
+## Works with your log platform
+
+Auto-detects exports from **Splunk**, **Datadog**, **New Relic**, and **Honeycomb** out of the box. Click Export in the tool you already pay for, point rlm-logger at the file, ask a question. No connectors, no API keys. See the [integration docs](https://exorust.github.io/rlm-logger/quickstart/#bring-your-own-logs).
+
 ## BYO model
 
 Anything LiteLLM supports:

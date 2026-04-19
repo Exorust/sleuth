@@ -28,6 +28,17 @@ ground truth (optional). The file is the product. It's deterministic to replay
 (`rlm replay case.rlm.json`), renders in [the browser viewer](viewer/),
 and is small enough to paste into a GitHub issue.
 
+## Works with your log platform
+
+Auto-detects exports from Splunk, Datadog, New Relic, and Honeycomb. Click Export
+in your platform of choice, hand rlm-logger the file, ask a question. No connectors,
+no API keys, no platform credentials.
+
+- [Splunk](integrations/splunk.md)
+- [Datadog](integrations/datadog.md)
+- [New Relic](integrations/newrelic.md)
+- [Honeycomb](integrations/honeycomb.md)
+
 ## Next
 
 - [Quickstart](quickstart.md) — 90-second tour

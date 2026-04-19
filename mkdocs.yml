@@ -22,6 +22,11 @@ theme:
 nav:
   - Home: index.md
   - Quickstart: quickstart.md
+  - Integrations:
+    - Splunk: integrations/splunk.md
+    - Datadog: integrations/datadog.md
+    - New Relic: integrations/newrelic.md
+    - Honeycomb: integrations/honeycomb.md
   - Case File Protocol: case-file.md
   - Tools: tools.md
   - BYO Model: models.md
