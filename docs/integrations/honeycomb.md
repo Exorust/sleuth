@@ -1,6 +1,6 @@
 # Honeycomb
 
-Export Honeycomb events from a query, then let rlm-logger read them.
+Export Honeycomb events from a query, then let Sleuth read them.
 
 ## Export from Honeycomb
 
@@ -8,7 +8,7 @@ Export Honeycomb events from a query, then let rlm-logger read them.
 2. On the results, click **⋯ → Download as JSON**.
 3. Save as `hc-incident.json`.
 
-rlm-logger auto-detects:
+Sleuth auto-detects:
 
 - Events-API shape: `{"time": "...", "samplerate": 1, "data": {"service.name": "...", "level": "...", "error.message": "...", "trace.trace_id": "..."}}`.
 - Query response wrapper: `{"events": [...]}` — the array is auto-flattened.
@@ -18,9 +18,9 @@ Fields normalized: `time` → `ts`, `data.service.name` (or `data.service`) → 
 ## Ask
 
 ```bash
-rlm ask "what caused the error spike on payment-gateway?" \
+sleuth ask "what caused the error spike on payment-gateway?" \
   --logs ./hc-incident.json \
-  --out payment-incident.rlm.json
+  --out payment-incident.sleuth.json
 ```
 
 ## Notes

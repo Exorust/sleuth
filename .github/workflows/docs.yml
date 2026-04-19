@@ -36,7 +36,7 @@ jobs:
       - name: Build viewer
         working-directory: viewer
         env:
-          VIEWER_BASE: /rlm-logger/viewer/
+          VIEWER_BASE: /sleuth/viewer/
         run: |
           npm install
           npm run build

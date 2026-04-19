@@ -3,7 +3,7 @@
 ## Install
 
 ```bash
-pip install rlm-logger
+pip install sleuth-rlm
 ```
 
 Python 3.11+. DuckDB + pydantic + typer + rich + litellm + dspy are the core deps.
@@ -19,35 +19,35 @@ export OPENAI_API_KEY=...        # or
 ## Run on the reference fixture
 
 ```bash
-git clone https://github.com/Exorust/rlm-logger && cd rlm-logger
-rlm ask "why did checkout fail around 3am?" \
+git clone https://github.com/Exorust/sleuth && cd sleuth
+sleuth ask "why did checkout fail around 3am?" \
   --logs examples/checkout-incident/logs/ \
   --model anthropic/claude-sonnet-4-6 \
-  --out case.rlm.json
+  --out case.sleuth.json
 ```
 
 You'll see a live Rich TUI: the trajectory column tracks each tool call, the step-
 output panel streams stdout, and the report panel fills in as the agent forms its
-conclusion. When it calls `submit_incident_report`, the run ends and `case.rlm.json`
+conclusion. When it calls `submit_incident_report`, the run ends and `case.sleuth.json`
 is written.
 
 ## Replay a case file
 
 ```bash
-rlm replay case.rlm.json
+sleuth replay case.sleuth.json
 ```
 
 Deterministic, no LLM calls. Useful for sharing: the case file is self-contained.
 
 ## View in the browser
 
-Drop `case.rlm.json` on [rlm.sh](https://rlm.sh) or append `?url=<public-url>` to load
+Drop `case.sleuth.json` on [rlm.sh](https://rlm.sh) or append `?url=<public-url>` to load
 a remote file. The viewer renders trajectory, evidence (with context ±3 lines),
 confidence dial, and a ground-truth diff if present.
 
 ## Bring your own logs
 
-rlm-logger auto-detects exports from the major log platforms. No flags, no config.
+Sleuth auto-detects exports from the major log platforms. No flags, no config.
 
 - [Splunk](integrations/splunk.md) — Export → JSON
 - [Datadog](integrations/datadog.md) — Log Explorer → Download as JSON

@@ -5,8 +5,8 @@ from __future__ import annotations
 
 from rich.console import Console
 
-from rlm_logger.schemas import Step
-from rlm_logger.ui.live import LiveRenderer
+from sleuth.schemas import Step
+from sleuth.ui.live import LiveRenderer
 
 
 def test_live_renderer_captures_core_panels():

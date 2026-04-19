@@ -5,7 +5,7 @@ from pathlib import Path
 
 import orjson
 
-from rlm_logger.schemas import CaseFile
+from sleuth.schemas import CaseFile
 
 
 def dump(case: CaseFile, path: Path) -> None:

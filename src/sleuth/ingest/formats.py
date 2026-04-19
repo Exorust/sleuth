@@ -28,8 +28,8 @@ from typing import Any, Callable, Iterator
 
 import duckdb
 
-from rlm_logger.redact import redact
-from rlm_logger.schemas import LogFileEntry, LogsManifest, TimeWindow
+from sleuth.redact import redact
+from sleuth.schemas import LogFileEntry, LogsManifest, TimeWindow
 
 MAX_BYTES = 2 * 1024 * 1024 * 1024  # 2 GiB
 MAX_ROWS = 50_000_000

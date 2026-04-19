@@ -20,8 +20,8 @@ from typing import Any
 
 import duckdb
 
-from rlm_logger.lm import LM, LMResponse
-from rlm_logger.schemas import (
+from sleuth.lm import LM, LMResponse
+from sleuth.schemas import (
     CaseFile,
     IncidentReport,
     LogsManifest,
@@ -30,12 +30,12 @@ from rlm_logger.schemas import (
     TerminationReason,
     Usage,
 )
-from rlm_logger.tools import around as _around
-from rlm_logger.tools import schema as _schema
-from rlm_logger.tools import search as _search
-from rlm_logger.tools import top_errors as _top_errors
-from rlm_logger.tools import trace as _trace
-from rlm_logger.ui.observer import StepObserver
+from sleuth.tools import around as _around
+from sleuth.tools import schema as _schema
+from sleuth.tools import search as _search
+from sleuth.tools import top_errors as _top_errors
+from sleuth.tools import trace as _trace
+from sleuth.ui.observer import StepObserver
 
 
 @dataclass

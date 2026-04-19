@@ -1,5 +1,5 @@
-"""rlm-logger: recursive-LM incident debugger for production logs."""
-from rlm_logger.schemas import (
+"""Sleuth: use an RLM to figure out your log files."""
+from sleuth.schemas import (
     CaseFile,
     EvidenceLine,
     GroundTruth,

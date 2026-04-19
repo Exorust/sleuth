@@ -1,8 +1,8 @@
 """Ingest correctness against the checkout-401 fixture."""
 from pathlib import Path
 
-from rlm_logger.ingest import ingest_paths
-from rlm_logger.store import open_store
+from sleuth.ingest import ingest_paths
+from sleuth.store import open_store
 
 FIXTURE = Path(__file__).parent.parent / "examples" / "checkout-incident"
 

@@ -1,4 +1,4 @@
-"""rlm CLI. Typer-based."""
+"""sleuth CLI. Typer-based."""
 from __future__ import annotations
 
 import sys
@@ -6,14 +6,14 @@ from pathlib import Path
 
 import typer
 
-app = typer.Typer(add_completion=False, help="Recursive-LM incident debugger for logs.")
+app = typer.Typer(add_completion=False, help="Sleuth: use an RLM to figure out your log files.")
 
 
 @app.command()
 def ask(
     question: str = typer.Argument(..., help="Natural-language question about the logs."),
     logs: list[Path] = typer.Option(..., "--logs", help="Log files or directories to ingest."),
-    out: Path = typer.Option(Path("incident.rlm.json"), "--out", help="Where to write the case file."),
+    out: Path = typer.Option(Path("incident.sleuth.json"), "--out", help="Where to write the case file."),
     model: str = typer.Option("anthropic/claude-sonnet-4-6", "--model", help="LiteLLM model id."),
     plain: bool = typer.Option(False, "--plain", help="Flat-scroll output, no live TUI."),
     max_iterations: int = typer.Option(20, "--max-iterations"),
@@ -21,13 +21,13 @@ def ask(
     max_wall_clock: float = typer.Option(180.0, "--max-wall-clock"),
 ) -> None:
     """Run the agent on a set of logs and write a case file."""
-    from rlm_logger.agent import Budget, run
-    from rlm_logger.case_file import dump
-    from rlm_logger.ingest import ingest_paths
-    from rlm_logger.lm import LiteLM
-    from rlm_logger.schemas import ModelInfo
-    from rlm_logger.store import open_store
-    from rlm_logger.ui.plain import PlainRenderer
+    from sleuth.agent import Budget, run
+    from sleuth.case_file import dump
+    from sleuth.ingest import ingest_paths
+    from sleuth.lm import LiteLM
+    from sleuth.schemas import ModelInfo
+    from sleuth.store import open_store
+    from sleuth.ui.plain import PlainRenderer
 
     files = _expand_log_paths(logs)
     if not files:
@@ -49,7 +49,7 @@ def ask(
         case = run(question=question, conn=conn, manifest=manifest, model=model_info,
                    lm=lm, observer=PlainRenderer(), budget=budget)
     else:
-        from rlm_logger.ui.live import LiveRenderer
+        from sleuth.ui.live import LiveRenderer
         with LiveRenderer(question=question) as renderer:
             case = run(question=question, conn=conn, manifest=manifest, model=model_info,
                        lm=lm, observer=renderer, budget=budget)
@@ -61,11 +61,11 @@ def ask(
 
 @app.command()
 def replay(
-    case: Path = typer.Argument(..., help="Path to a .rlm.json case file."),
+    case: Path = typer.Argument(..., help="Path to a .sleuth.json case file."),
 ) -> None:
     """Deterministically re-play a case file's trajectory in the terminal."""
-    from rlm_logger.case_file import load
-    from rlm_logger.ui.plain import PlainRenderer
+    from sleuth.case_file import load
+    from sleuth.ui.plain import PlainRenderer
 
     cf = load(case)
     r = PlainRenderer()

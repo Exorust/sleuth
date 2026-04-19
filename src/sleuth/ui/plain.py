@@ -4,8 +4,8 @@ from __future__ import annotations
 import sys
 from typing import Any
 
-from rlm_logger.schemas import Step
-from rlm_logger.ui.observer import StepObserver
+from sleuth.schemas import Step
+from sleuth.ui.observer import StepObserver
 
 
 class PlainRenderer(StepObserver):

@@ -3,7 +3,7 @@
 Secret-shaped strings are assembled at runtime so this file is safe for
 repo-level secret scanning. None of these are real credentials.
 """
-from rlm_logger.redact import redact
+from sleuth.redact import redact
 
 # Assemble secret-shaped tokens from parts so the raw file never contains
 # a full match for common scanners (GitHub push protection, TruffleHog, etc.).

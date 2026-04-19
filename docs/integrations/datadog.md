@@ -1,6 +1,6 @@
 # Datadog
 
-Export Datadog logs from Log Explorer, then hand them to rlm-logger.
+Export Datadog logs from Log Explorer, then hand them to Sleuth.
 
 ## Export from Datadog
 
@@ -8,7 +8,7 @@ Export Datadog logs from Log Explorer, then hand them to rlm-logger.
 2. Click the **⚙ → Download as JSON** (or **NDJSON**) button above the list.
 3. Save as `dd-incident.json`.
 
-rlm-logger auto-detects all three common Datadog shapes:
+Sleuth auto-detects all three common Datadog shapes:
 
 - NDJSON with the modern envelope: `{"id": "...", "attributes": {"timestamp": ..., "service": ..., "status": ..., "message": ...}}`.
 - The REST v2 response wrapper: `{"data": [{"attributes": {...}}, ...], "meta": {...}}` — the top-level `data` array is auto-flattened.
@@ -19,12 +19,12 @@ Fields normalized: `attributes.timestamp` → `ts`, `attributes.service` → `se
 ## Ask
 
 ```bash
-rlm ask "why are payment-gateway 401s spiking?" \
+sleuth ask "why are payment-gateway 401s spiking?" \
   --logs ./dd-incident.json \
-  --out payment-incident.rlm.json
+  --out payment-incident.sleuth.json
 ```
 
 ## Notes
 
-- If you have the Datadog CLI and an API key, `datadog-ci` can dump a search result to NDJSON in a shell script — rlm-logger will read that directly.
+- If you have the Datadog CLI and an API key, `datadog-ci` can dump a search result to NDJSON in a shell script — Sleuth will read that directly.
 - `trace_id` fields are preserved in the raw row, so the agent can cross-reference traces when you ask.

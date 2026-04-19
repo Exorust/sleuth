@@ -22,8 +22,8 @@ from rich.panel import Panel
 from rich.table import Table
 from rich.text import Text
 
-from rlm_logger.schemas import Step
-from rlm_logger.ui.observer import StepObserver
+from sleuth.schemas import Step
+from sleuth.ui.observer import StepObserver
 
 _TOOL_COLOR = {
     "schema": "cyan",

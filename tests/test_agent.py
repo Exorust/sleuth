@@ -3,12 +3,12 @@ from pathlib import Path
 
 import pytest
 
-from rlm_logger.agent import Budget, run
-from rlm_logger.ingest import ingest_paths
-from rlm_logger.lm import MockLM
-from rlm_logger.schemas import ModelInfo
-from rlm_logger.store import open_store
-from rlm_logger.ui.plain import PlainRenderer
+from sleuth.agent import Budget, run
+from sleuth.ingest import ingest_paths
+from sleuth.lm import MockLM
+from sleuth.schemas import ModelInfo
+from sleuth.store import open_store
+from sleuth.ui.plain import PlainRenderer
 
 FIXTURE = Path(__file__).parent.parent / "examples" / "checkout-incident"
 

@@ -1,6 +1,6 @@
 # New Relic
 
-Export NRQL results from New Relic One, then point rlm-logger at the file.
+Export NRQL results from New Relic One, then point Sleuth at the file.
 
 ## Export from New Relic
 
@@ -15,7 +15,7 @@ Export NRQL results from New Relic One, then point rlm-logger at the file.
 2. Click **⋮ → Export → JSON** on the result panel.
 3. Save as `nr-incident.json`.
 
-rlm-logger auto-detects:
+Sleuth auto-detects:
 
 - Flat NRQL rows: `{"timestamp": 1713322684000, "service.name": "checkout", "log.level": "ERROR", "message": "..."}` — epoch ms + dotted keys.
 - Wrapped NRQL response: `{"results": [{"events": [...]}]}` — the `events` array is auto-flattened.
@@ -25,12 +25,12 @@ Fields normalized: epoch-ms `timestamp` → `ts`, `service.name` (or `entity.nam
 ## Ask
 
 ```bash
-rlm ask "why did checkout latency spike at 03:04?" \
+sleuth ask "why did checkout latency spike at 03:04?" \
   --logs ./nr-incident.json \
-  --out checkout-latency.rlm.json
+  --out checkout-latency.sleuth.json
 ```
 
 ## Notes
 
-- NRQL times are milliseconds since epoch. rlm-logger converts to UTC automatically.
+- NRQL times are milliseconds since epoch. Sleuth converts to UTC automatically.
 - If you use New Relic's `nrql` CLI, pipe to a file: `nrql "SELECT ... FROM Log ..." --json > nr-incident.json`.

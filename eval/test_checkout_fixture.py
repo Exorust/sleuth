@@ -14,12 +14,12 @@ from __future__ import annotations
 import io
 from pathlib import Path
 
-from rlm_logger.agent import Budget, run
-from rlm_logger.ingest import ingest_paths
-from rlm_logger.lm import MockLM
-from rlm_logger.schemas import GroundTruth, ModelInfo
-from rlm_logger.store import open_store
-from rlm_logger.ui.plain import PlainRenderer
+from sleuth.agent import Budget, run
+from sleuth.ingest import ingest_paths
+from sleuth.lm import MockLM
+from sleuth.schemas import GroundTruth, ModelInfo
+from sleuth.store import open_store
+from sleuth.ui.plain import PlainRenderer
 
 FIXTURE = Path(__file__).parent.parent / "examples" / "checkout-incident"
 

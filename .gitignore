@@ -19,3 +19,4 @@ viewer/.astro/
 viewer/node_modules/
 .venv/
 site/
+.gstack/

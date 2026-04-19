@@ -1,8 +1,8 @@
-site_name: rlm-logger
-site_description: Git bisect for production incidents. Recursive-LM agent for log analysis.
-site_url: https://exorust.github.io/rlm-logger/
-repo_url: https://github.com/Exorust/rlm-logger
-repo_name: Exorust/rlm-logger
+site_name: Sleuth
+site_description: Use an RLM to figure out your log files. Git bisect for production incidents.
+site_url: https://exorust.github.io/sleuth/
+repo_url: https://github.com/Exorust/sleuth
+repo_name: Exorust/sleuth
 
 theme:
   name: material

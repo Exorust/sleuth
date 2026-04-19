@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "description": "Static case-file viewer for rlm-logger. Deployed at rlm.sh.",
+  "description": "Static case-file viewer for Sleuth. Deployed at rlm.sh.",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

@@ -1,5 +1,5 @@
 /**
- * TypeScript mirror of src/rlm_logger/schemas.py.
+ * TypeScript mirror of src/sleuth/schemas.py.
  * Any change here MUST be kept in sync with the Python side.
  * Zod schemas validate case files loaded from URL / drag-drop at runtime.
  */

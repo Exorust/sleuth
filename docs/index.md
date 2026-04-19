@@ -1,11 +1,12 @@
-# rlm-logger
+# Sleuth
 
-**Git bisect for production incidents.** Point it at your logs, ask a natural-language
-question, get a signed case file you can share in a Slack channel or link in a PR.
+**Use an RLM to figure out your log files.** Git bisect for production incidents.
+Point it at your logs, ask a natural-language question, get a signed case file you
+can share in a Slack channel or link in a PR.
 
 ```bash
-pip install rlm-logger
-rlm ask "why did checkout fail around 3am?" --logs ./logs/
+pip install sleuth-rlm
+sleuth ask "why did checkout fail around 3am?" --logs ./logs/
 ```
 
 ## What it is
@@ -23,15 +24,15 @@ and a confidence score.
 
 ## The case file
 
-Every run produces one `.rlm.json` file: question + trajectory + report + evidence +
+Every run produces one `.sleuth.json` file: question + trajectory + report + evidence +
 ground truth (optional). The file is the product. It's deterministic to replay
-(`rlm replay case.rlm.json`), renders in [the browser viewer](viewer/),
+(`sleuth replay case.sleuth.json`), renders in [the browser viewer](viewer/),
 and is small enough to paste into a GitHub issue.
 
 ## Works with your log platform
 
 Auto-detects exports from Splunk, Datadog, New Relic, and Honeycomb. Click Export
-in your platform of choice, hand rlm-logger the file, ask a question. No connectors,
+in your platform of choice, hand Sleuth the file, ask a question. No connectors,
 no API keys, no platform credentials.
 
 - [Splunk](integrations/splunk.md)

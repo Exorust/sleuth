@@ -6,7 +6,7 @@ import ConfidenceDial from "../components/ConfidenceDial.astro";
 import GroundTruthDiff from "../components/GroundTruthDiff.astro";
 import { CaseFile, GroundTruth } from "../lib/schemas";
 
-import demoRaw from "../../../examples/checkout-incident/incident.rlm.json";
+import demoRaw from "../../../examples/checkout-incident/incident.sleuth.json";
 import gtRaw from "../../../examples/checkout-incident/ground_truth.json";
 
 const demo = CaseFile.parse(demoRaw);
@@ -15,10 +15,10 @@ const gt = GroundTruth.parse(gtRaw);
 const sealed = demo.termination_reason === "submitted";
 const statusColor = sealed ? "text-ok" : "text-warn";
 const statusDotColor = sealed ? "bg-ok" : "bg-warn";
-const caseId = "RLM-0001";
+const caseId = "SLEUTH-0001";
 const sig = demo.logs_manifest.files[0]?.sha256?.slice(0, 12) ?? "unsigned";
 ---
-<Base title="rlm-logger — case file RLM-0001" description="Git bisect for production incidents.">
+<Base title="Sleuth — case file SLEUTH-0001" description="Use an RLM to figure out your log files.">
   <!-- Terminal bar -->
   <div class="border-b border-border bg-surface/60 backdrop-blur supports-[backdrop-filter]:bg-surface/40 sticky top-0 z-10">
     <div class="max-w-6xl mx-auto px-4 md:px-6 h-10 flex items-center gap-3 font-mono text-xs">
@@ -29,7 +29,7 @@ const sig = demo.logs_manifest.files[0]?.sha256?.slice(0, 12) ?? "unsigned";
       </div>
       <span class="text-muted hidden sm:inline">~/incidents/checkout-2026-04-17</span>
       <span class="text-muted truncate">
-        <span class="text-accent">$</span> rlm ask <span class="text-fg/90">"{demo.question.slice(0, 48)}{demo.question.length > 48 ? "…" : ""}"</span>
+        <span class="text-accent">$</span> sleuth ask <span class="text-fg/90">"{demo.question.slice(0, 48)}{demo.question.length > 48 ? "…" : ""}"</span>
       </span>
       <span class="ml-auto flex items-center gap-2">
         <span class={`relative flex w-2 h-2`}>
@@ -55,9 +55,9 @@ const sig = demo.logs_manifest.files[0]?.sha256?.slice(0, 12) ?? "unsigned";
           <div>SIG <span class="text-fg/80">{sig}</span></div>
           <div>v{demo.version} · {demo.model.provider}/{demo.model.name}</div>
         </div>
-        <a href="https://github.com/Exorust/rlm-logger"
+        <a href="https://github.com/Exorust/sleuth"
            class="font-mono text-xs px-3 py-1.5 border border-border hover:border-accent hover:text-accent transition-colors rounded">
-          <span class="text-muted mr-1">$</span>pip install rlm-logger
+          <span class="text-muted mr-1">$</span>pip install sleuth-rlm
         </a>
       </div>
 
@@ -101,7 +101,7 @@ const sig = demo.logs_manifest.files[0]?.sha256?.slice(0, 12) ?? "unsigned";
       </summary>
       <div class="mt-4 pt-4 border-t border-border space-y-3 text-sm text-fg/80 leading-relaxed">
         <p>
-          One run of the <a href="https://github.com/Exorust/rlm-logger" class="text-accent hover:underline">rlm-logger</a> agent on a synthetic 72-row, 5-service incident: a Stripe API key rotation that cascaded into checkout 5xx errors. You asked a question in English. The agent wrote Python over your logs. This page renders the signed JSON it produced.
+          One run of the <a href="https://github.com/Exorust/sleuth" class="text-accent hover:underline">Sleuth</a> agent on a synthetic 72-row, 5-service incident: a Stripe API key rotation that cascaded into checkout 5xx errors. You asked a question in English. The agent wrote Python over your logs. This page renders the signed JSON it produced.
         </p>
         <p class="text-fg/60">
           Every run produces one <strong class="text-fg">case file</strong>: question, trajectory, root cause, cited evidence. Self-contained. Replayable. Shareable.
@@ -153,8 +153,8 @@ const sig = demo.logs_manifest.files[0]?.sha256?.slice(0, 12) ?? "unsigned";
       <span>end of case file</span>
       <span class="text-fg/40">·</span>
       <span>{sig}</span>
-      <a href="https://github.com/Exorust/rlm-logger" class="ml-auto hover:text-accent">github</a>
-      <a href="https://exorust.github.io/rlm-logger/" class="hover:text-accent">docs</a>
+      <a href="https://github.com/Exorust/sleuth" class="ml-auto hover:text-accent">github</a>
+      <a href="https://exorust.github.io/sleuth/" class="hover:text-accent">docs</a>
       <span>Apache-2.0</span>
     </footer>
   </main>

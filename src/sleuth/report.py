@@ -6,7 +6,7 @@ in-flight CaseFile, and signal the agent loop to stop.
 """
 from __future__ import annotations
 
-from rlm_logger.schemas import IncidentReport
+from sleuth.schemas import IncidentReport
 
 
 def validate_report(payload: dict) -> IncidentReport:

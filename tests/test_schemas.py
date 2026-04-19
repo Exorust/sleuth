@@ -2,13 +2,13 @@
 import json
 from pathlib import Path
 
-from rlm_logger.schemas import CaseFile, GroundTruth
+from sleuth.schemas import CaseFile, GroundTruth
 
 FIXTURE = Path(__file__).parent.parent / "examples" / "checkout-incident"
 
 
 def test_checkout_fixture_case_file_roundtrips():
-    raw = json.loads((FIXTURE / "incident.rlm.json").read_text())
+    raw = json.loads((FIXTURE / "incident.sleuth.json").read_text())
     case = CaseFile.model_validate(raw)
     assert case.question.startswith("why did checkout")
     assert case.termination_reason == "submitted"

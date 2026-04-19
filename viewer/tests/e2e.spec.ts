@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 
 test("viewer renders checkout-401 demo", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: /rlm-logger/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Sleuth/i })).toBeVisible();
   await expect(page.getByText(/why did checkout/i)).toBeVisible();
   await expect(page.getByText(/root cause/i)).toBeVisible();
   await expect(page.getByLabel(/Evidence/i)).toBeVisible();

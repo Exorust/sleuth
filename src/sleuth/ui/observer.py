@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from typing import Any, Protocol
 
-from rlm_logger.schemas import Step
+from sleuth.schemas import Step
 
 
 class StepObserver(Protocol):

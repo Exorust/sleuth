@@ -3,9 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "rlm-logger"
+name = "sleuth-rlm"
 version = "0.0.1"
-description = "Recursive-LM incident debugger. Git bisect for production logs."
+description = "Sleuth: use an RLM to figure out your log files. Git bisect for production incidents."
 readme = "README.md"
 license = "Apache-2.0"
 requires-python = ">=3.11"
@@ -44,15 +44,15 @@ docs = [
 ]
 
 [project.scripts]
-rlm = "rlm_logger.cli:app"
+sleuth = "sleuth.cli:app"
 
 [project.urls]
-Homepage = "https://rlm.sh"
-Repository = "https://github.com/chandu/rlm-logger"
-Documentation = "https://rlm.sh/docs"
+Homepage = "https://github.com/Exorust/sleuth"
+Repository = "https://github.com/Exorust/sleuth"
+Documentation = "https://exorust.github.io/sleuth/"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/rlm_logger"]
+packages = ["src/sleuth"]
 
 [tool.ruff]
 line-length = 100
